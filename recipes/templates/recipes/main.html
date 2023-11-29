@@ -18,8 +18,14 @@
 
 <body>
   <div class="nav-bar">
-    <img id="logo" src="{% static 'recipes/images/logo.jpg' %}" width="150px">
-    <input id="search" type="text" placeholder="   Search for Ingredient">
+    <div class="search_box">
+      <input style="margin-left:20px" id="search" type="text" placeholder="   Search for Ingredient">
+      </a>
+    </div>
+    <a style="background-color:red; border-radius:80%;color: white;margin:20px;text-align:center; text-decoration:none; font-size:x-large;"
+      href="{%url 'logout' %}" class="logout_btn">
+      Logout
+    </a>
   </div>
 
   <div class="recipe_grid">
