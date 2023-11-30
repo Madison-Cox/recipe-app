@@ -18,6 +18,10 @@
 
 <body>
   <div class="nav-bar">
+    <a style='border-radius:5px;font-size:x-large;padding:10px;margin:10px;' href="{%url 'logout' %}"
+      class="logout_btn">
+      Logout
+    </a>
     <div class="search_box">
       <form action="" method="GET" class="form">
         {% csrf_token %}
@@ -61,6 +65,8 @@
         text-decoration: none;">
     Search Recipe Data
   </a>
+
+
 </body>
 
 </html>
