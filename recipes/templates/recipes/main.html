@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>RecipeApp Home</title>
+  <title>RecipeApp Recipes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% load static %}
   <link rel="shortcut icon" href="{% static 'recipes/images/favicon.png' %}">
@@ -19,13 +19,25 @@
 <body>
   <div class="nav-bar">
     <div class="search_box">
-      <input style="margin-left:20px" id="search" type="text" placeholder="   Search for Ingredient">
-      </a>
+      <form action="" method="GET" class="form">
+        {% csrf_token %}
+        <input style='font-size:x-large; margin-left:400px; margin-top:10px;' type="text" name="recipe_search"
+          class="form_search_input" id="searchbar" placeholder="Search Recipes" onkeyup="search_recipe()" />
+      </form>
+      <br>
+      <div class="search_results" autocomplete="off"
+        style="margin-left:400px;position:fixed;background:white;display: none;">
+        {% for object in object_list %}
+        <p class="recipe_searched">
+          <a class="recipe_name"
+            style="font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
+            href="{{object.get_absolute_url}}"> {{object.name}} </a>
+        </p>
+        {% endfor %}
+      </div>
+
     </div>
-    <a style="background-color:red; border-radius:80%;color: white;margin:20px;text-align:center; text-decoration:none; font-size:x-large;"
-      href="{%url 'logout' %}" class="logout_btn">
-      Logout
-    </a>
+
   </div>
 
   <div class="recipe_grid">
@@ -40,6 +52,15 @@
     </div>
     {% endfor %}
   </div>
+  <script src="{% static 'recipes/js/js.js' %}"></script>
+  <a href="{%url 'recipes:search' %}" style="
+        color: white; 
+        background-color: rgba(0, 0, 0, 0.704); 
+        border-radius: 8px; 
+        padding: 7px;
+        text-decoration: none;">
+    Search Recipe Data
+  </a>
 </body>
 
 </html>

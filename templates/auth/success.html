@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>RecipeApp | Logout</title>
+  <title>RecipeApp Logout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% load static %}
   <link rel="shortcut icon" href="{% static 'recipes/images/favicon.png' %}">
@@ -29,6 +29,7 @@
     <br>
     <a style="background-color: lime;  border-radius: 80px; font-size: x-large; padding: 15px; text-decoration: none;"
       class="login_btn" href="{%url 'login' %}"> Login </a>
+    <a class="back-home_btn" href="{%url 'recipes:home' %}"> Home </a>
   </div>
 </body>
 
