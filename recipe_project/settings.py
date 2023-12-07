@@ -28,10 +28,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-ml49cp(e)=yakpe
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
-    DEBUG = True
+    DEBUG = False
 
 if IS_HEROKU:
-    DEBUG = True
+    DEBUG = False
 
 if IS_HEROKU:
     ALLOWED_HOSTS = ['*']
@@ -145,8 +145,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTH
-LOGIN_URL = '/login/'
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
