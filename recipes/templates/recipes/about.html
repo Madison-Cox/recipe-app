@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <title>RecipeApp Recipes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,16 +18,12 @@
 </head>
 
 <body>
-  <div class="nav-bar">
+  <navbar class="nav-bar">
     <a style='border-radius:5px;font-size:x-large;padding:10px;margin:10px;' href="{%url 'logout' %}" class="">
       Logout
     </a>
-    <a style='border-radius:5px;font-size:x-large;padding:10px;margin:10px;' href="{%url 'create' %}"
-      class="create_btn">
-      Create
-    </a>
-    <a style='border-radius:5px;font-size:x-large;padding:10px;margin:10px;' href="{%url 'about' %}" class="about_btn">
-      About
+    <a style='border-radius:5px;font-size:x-large;padding:10px;margin:10px;' href="{%url 'list' %}" class="home_btn">
+      Recipe List
     </a>
     <div class="search_box">
       <form action="" method="GET" class="form">
@@ -44,35 +41,19 @@
             href="{{object.get_absolute_url}}"> {{object.name}} </a>
         </p>
         {% endfor %}
-      </div>
-
-    </div>
+  </navbar>
 
   </div>
+  <h1 style="">About this app</h1>
+  <p style="font-size:large; font-weight:bold; text-align:center; display:inline-block; width:200px"> This Recipe APP is
+    intended to
+    show recipes
+    for delicious snacks.
+    This app is built
+    using Django, hosted with
+    Heroku.</p>
 
-  <div class="recipe_grid">
-    {% for object in object_list %}
-    <div class="grid_item">
-      <h4><a class="recipe_name" href="{{object.get_absolute_url}}"> {{object.name}} </a></h4>
-      <div style="margin-bottom: 10px;">
-        <b>Cooking Time: </b> {{object.cooking_time}} <br>
-        <b>Difficulty: </b> {{object.calculate_difficulty}} <br>
-      </div>
-      <img class="food_images" src="{{object.pic.url}}" />
-    </div>
-    {% endfor %}
-  </div>
-  <script src="{% static 'recipes/js/js.js' %}"></script>
-  <a href="{%url 'recipes:search' %}" style="
-        color: white; 
-        background-color: rgba(0, 0, 0, 0.704); 
-        border-radius: 8px; 
-        padding: 7px;
-        text-decoration: none;">
-    Search Recipe Data
-  </a>
-
-
+  <p>check out <a href="https://madison-cox.github.io/Portfolio/index.html">my portfolio</a>.</p>
 </body>
 
 </html>

@@ -4,14 +4,19 @@ from .models import Recipe
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from .forms import RecipesSearchForm
+from .forms import RecipesSearchForm, CreateRecipeForm
 import pandas as pd
 from .utils import get_recipename_from_id, get_chart
+
 # Create your views here.
 
 
 def welcome(request):
     return render(request, 'recipes/recipes_home.html')
+
+
+def about_view(request):
+    return render(request, 'recipes/about.html')
 
 
 class RecipeListView(LoginRequiredMixin, ListView):
@@ -23,6 +28,34 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipes/detail.html'
 
+def create_view(request):
+    create_form = CreateRecipeForm(request.POST or None, request.FILES)
+    name = None
+    cooking_time = None
+    ingredients = None
+
+    if request.method == 'POST':
+
+        try:
+            recipe = Recipe.objects.create(
+                name = request.POST.get('name'),
+                cooking_time = request.POST.get('cooking_time'),
+                ingredients = request.POST.get('ingredients'),
+            )
+
+            recipe.save()
+
+        except:
+            print('Error!!!')
+
+    context = {
+        'create_form': create_form,
+        'name': name,
+        'cooking_time': cooking_time,
+        'ingredients': ingredients,
+    }
+
+    return render(request, 'recipes/create.html', context)
 
 
 @login_required
