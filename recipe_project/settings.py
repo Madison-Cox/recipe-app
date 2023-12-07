@@ -28,10 +28,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-ml49cp(e)=yakpe
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
-    DEBUG = False
+    DEBUG = True
 
 if IS_HEROKU:
-    DEBUG = False
+    DEBUG = True
 
 if IS_HEROKU:
     ALLOWED_HOSTS = ['*']
